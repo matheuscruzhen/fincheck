@@ -57,6 +57,15 @@ export class TransactionsService {
           lt: new Date(filters.year, filters.month + 1),
         },
       },
+      include: {
+        category: {
+          select: {
+            id: true,
+            name: true,
+            icon: true,
+          },
+        },
+      },
     });
   }
   async update(
