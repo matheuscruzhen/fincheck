@@ -1,98 +1,129 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Fincheck (API)
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+API for Fincheck, a project to help users manage their finances.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+For more details on other project components, check out the web client and mobile client repositories.
 
-## Description
+## Technologies
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+These are some of the technologies used in this project:
 
-## Project setup
+- `@nestjs/common`, `@nestjs/core`, `@nestjs/platform-express`: Core modules for building scalable server-side applications with NestJS.
+- `bcryptjs`: Library for hashing and verifying passwords.
+- `dotenv`: Loads environment variables from a `.env` file into `process.env`.
+- `eslint`: Linting tool for JavaScript/TypeScript code.
+- `jest`: JavaScript testing framework.
+- `prettier`: Code formatter.
+- `prisma`: ORM for working with databases in Node.js and TypeScript.
+- `rxjs`: Reactive programming library for asynchronous data streams.
+- `supertest`: HTTP assertions for integration testing.
+- `typescript`: Strongly typed programming language that builds on JavaScript.
 
-```bash
-$ yarn install
-```
+_For more information about other dependencies, see the `package.json` file._
 
-## Compile and run the project
+## Prerequisites
 
-```bash
-# development
-$ yarn run start
+Before installing and running this project, make sure you have the following:
 
-# watch mode
-$ yarn run start:dev
+- **Database**: You need to have a database configured (e.g., PostgreSQL, MySQL, or SQLite, depending on your Prisma setup).
+- **Node.js**: Install Node.js from [nodejs.org](https://nodejs.org/).
+- **Package Manager**: You need a package manager for Node.js. This tutorial uses [pnpm](https://pnpm.io/), but you can use npm or yarn if you prefer.
 
-# production mode
-$ yarn run start:prod
-```
+## Installation
 
-## Run tests
+1. Clone the repository:
 
-```bash
-# unit tests
-$ yarn run test
+   ```bash
+   git clone https://github.com/matheuscruzhen/fincheck-api.git
+   ```
 
-# e2e tests
-$ yarn run test:e2e
+2. Browse to the project folder:
 
-# test coverage
-$ yarn run test:cov
-```
+   ```bash
+   cd fincheck-api
+   ```
 
-## Deployment
+3. Install dependencies:
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+   ```bash
+   pnpm install
+   ```
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+4. Create a `.env` file in the root of the project and set the environment variables as described below:
 
-```bash
-$ yarn install -g @nestjs/mau
-$ mau deploy
-```
+   ```bash
+   # DATABASE_URL: The connection string for your database.
+   # Example for local development (PostgreSQL):
+   # DATABASE_URL="postgresql://user:password@localhost:5432/fincheck"
+   DATABASE_URL=""
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+   # JWT_SECRET: Secret key for signing JWT tokens.
+   JWT_SECRET=""
+   ```
 
-## Resources
+## Available scripts
 
-Check out a few resources that may come in handy when working with NestJS:
+This section describes the available scripts in the `package.json` file and their functionalities.
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+### Development
 
-## Support
+- #### `start:dev`
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+  Starts the server in development mode with live-reloading.
 
-## Stay in touch
+  ```bash
+  pnpm start:dev
+  ```
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### Production
+
+- #### `build`
+
+  Compiles the application for production.
+
+  ```bash
+  pnpm build
+  ```
+
+- #### `start:prod`
+
+  Starts the server for production from the compiled files.
+
+  ```bash
+  pnpm start:prod
+  ```
+
+### Testing
+
+- #### `test`
+
+  Runs all unit tests.
+
+  ```bash
+  pnpm test
+  ```
+
+- #### `test:watch`
+
+  Runs tests in watch mode.
+
+  ```bash
+  pnpm test:watch
+  ```
+
+- #### `test:cov`
+
+  Runs tests and generates a coverage report.
+
+  ```bash
+  pnpm test:cov
+  ```
+
+## Related links
+
+- [NestJS](https://nestjs.com/)
+- [Prisma](https://www.prisma.io/)
 
 ## License
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+[UNLICENSED](LICENSE)
